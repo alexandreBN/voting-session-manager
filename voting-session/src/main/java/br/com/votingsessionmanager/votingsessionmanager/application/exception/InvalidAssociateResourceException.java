@@ -26,7 +26,5 @@ public class InvalidAssociateResourceException extends InvalidResourceException 
 	public Long getId() {
 		return id;
 	}
-	
-	
 
 }
