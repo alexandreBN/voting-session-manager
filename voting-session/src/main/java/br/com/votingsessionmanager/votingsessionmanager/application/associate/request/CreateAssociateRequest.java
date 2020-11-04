@@ -1,4 +1,4 @@
-package br.com.votingsessionmanager.votingsessionmanager.application.request;
+package br.com.votingsessionmanager.votingsessionmanager.application.associate.request;
 
 import javax.validation.constraints.NotBlank;
 

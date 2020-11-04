@@ -1,8 +1,8 @@
-package br.com.votingsessionmanager.votingsessionmanager.application.exception;
+package br.com.votingsessionmanager.votingsessionmanager.application.agenda.exception;
 
 import br.com.votingsessionmanager.commons.application.exception.InvalidResourceException;
 
-public class InvalidAssociateResourceException extends InvalidResourceException {
+public class InvalidAgendaResourceException extends InvalidResourceException {
 
 	/**
 	 * 
@@ -12,8 +12,8 @@ public class InvalidAssociateResourceException extends InvalidResourceException 
 	private final String resource;
 	private final Long id;
 
-	public InvalidAssociateResourceException(Long id) {
-		this.resource = "associate";
+	public InvalidAgendaResourceException(Long id) {
+		this.resource = "product";
 		this.id = id;
 	}
 
