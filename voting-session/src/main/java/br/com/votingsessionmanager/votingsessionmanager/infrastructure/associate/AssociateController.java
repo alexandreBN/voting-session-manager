@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.votingsessionmanager.commons.infrastructure.resource.URIConsumerResource;
-import br.com.votingsessionmanager.votingsessionmanager.application.exception.InvalidAssociateResourceException;
-import br.com.votingsessionmanager.votingsessionmanager.application.request.CreateAssociateRequest;
+import br.com.votingsessionmanager.votingsessionmanager.application.associate.exception.InvalidAssociateResourceException;
+import br.com.votingsessionmanager.votingsessionmanager.application.associate.request.CreateAssociateRequest;
 import br.com.votingsessionmanager.votingsessionmanager.domain.associate.Associate;
 
 @RestController
