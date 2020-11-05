@@ -1,5 +1,6 @@
 package br.com.votingsessionmanager.votingsessionmanager.domain.agenda;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -29,6 +30,7 @@ public class Agenda {
 	public Agenda(String name, String description) {
 		this.name = name;
 		this.description = description;
+		this.votes = new HashSet<>();
 	}
 
 	public Long getId() {
