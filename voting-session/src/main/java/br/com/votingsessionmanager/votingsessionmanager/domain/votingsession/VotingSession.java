@@ -1,6 +1,7 @@
 package br.com.votingsessionmanager.votingsessionmanager.domain.votingsession;
 
 import java.time.LocalDateTime;
+import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import br.com.votingsessionmanager.votingsessionmanager.domain.agenda.Agenda;
+import br.com.votingsessionmanager.votingsessionmanager.domain.agenda.Vote;
 
 @Entity
 public class VotingSession {
@@ -44,6 +46,25 @@ public class VotingSession {
 
 	public LocalDateTime getOpenUntil() {
 		return openUntil;
+	}
+
+	public boolean canReceiveVotes() {
+		LocalDateTime now = LocalDateTime.now();
+		boolean canReceiveVotes = now.isBefore(openUntil);
+		return canReceiveVotes;
+	}
+
+	public boolean alreadyReceiveVotesAssociate(Long associateId) {
+		int numberOfCandidateVotes = agenda.getVotes().stream()
+			.filter(vote -> vote.getAssociate().getId().equals(associateId))
+			.collect(Collectors.toSet())
+			.size();
+
+		return numberOfCandidateVotes > 0;
+	}
+
+	public void add(Vote vote) {
+		this.agenda.getVotes().add(vote);
 	}
 
 }

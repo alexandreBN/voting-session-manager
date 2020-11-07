@@ -3,12 +3,14 @@ package br.com.votingsessionmanager.votingsessionmanager.application.votingsessi
 import java.time.LocalDateTime;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class VotingSessionRequest {
 
+	@NotNull
 	@Positive
 	@JsonProperty("agenda_id")
 	private Long agendaId;

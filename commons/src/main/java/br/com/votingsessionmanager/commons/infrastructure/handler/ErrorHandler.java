@@ -4,11 +4,11 @@ import java.text.MessageFormat;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -16,11 +16,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
-import com.google.common.base.CaseFormat;
-
 import br.com.votingsessionmanager.commons.application.exception.InvalidResourceException;
+import br.com.votingsessionmanager.commons.application.exception.InvalidResourceForeignKeyReferenceOnResourceException;
 import br.com.votingsessionmanager.commons.application.exception.InvalidResourceReferenceException;
 import br.com.votingsessionmanager.commons.application.exception.sessionvote.VotingSessionAlreadyOpenedWithAgendaException;
+import br.com.votingsessionmanager.commons.application.exception.sessionvote.VotingSessionAlreadyReceiveVoteFromAssociate;
+import br.com.votingsessionmanager.commons.application.exception.sessionvote.VotingSessionAreNotAbleToReceiveVotesOnAgenda;
 
 @RestControllerAdvice
 public class ErrorHandler {
@@ -47,12 +48,23 @@ public class ErrorHandler {
 
 	@ExceptionHandler(value = InvalidResourceReferenceException.class)
 	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
-	public ResponseEntity<ErrorCustom> invalidResourceRefereceException(InvalidResourceReferenceException ex) {
-		logger.warn("Unable to get resource {} with id {} ", ex.getResource(), ex.getId());
-		
-		return null;
+	public ErrorCustom invalidResourceRefereceException(InvalidResourceReferenceException ex) {
+		String message = MessageFormat.format("with value {0} does not exists", ex.getId());
+		logger.warn(message);
+
+		ErrorCustom error = buildErrorCustom(new FieldError("agenda_id", ex.getResource(), message));
+		return error;
 	}
 
+	@ExceptionHandler(value = InvalidResourceForeignKeyReferenceOnResourceException.class)
+	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
+	public ErrorCustom invalidAgendaResourceReferenceOnVotingSessionException(InvalidResourceForeignKeyReferenceOnResourceException ex) {
+		String message = MessageFormat.format("with value {0} is not present on {1} resource", ex.getForeignKeyResourceId(), ex.getMainResource());
+		logger.warn(message);
+		ErrorCustom error = buildErrorCustom(new FieldError("resource_id", ex.getForeignResource(),message));
+		return error;
+	}
+	
 	@ExceptionHandler(value = VotingSessionAlreadyOpenedWithAgendaException.class)
 	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
 	public ErrorCustom votingSessionAlreadyOpenedWithAgendaException(VotingSessionAlreadyOpenedWithAgendaException ex) {
@@ -65,4 +77,30 @@ public class ErrorHandler {
 		ErrorCustom error = new ErrorCustom(errorsCustom);
 		return error;
 	}
+
+	@ExceptionHandler(value = VotingSessionAreNotAbleToReceiveVotesOnAgenda.class)
+	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
+	public ErrorCustom votingSessionAreNotAbleToReceiveVotesOnAgenda(VotingSessionAreNotAbleToReceiveVotesOnAgenda ex) {
+		String message = MessageFormat.format("with value {0} is not able to accept more votes because voting_session has been closed", ex.getAgendaId());
+		logger.warn(message);
+		ErrorCustom error = buildErrorCustom(new FieldError("agenda", "agenda_id", message));
+		return error;
+	}
+
+	@ExceptionHandler(value = VotingSessionAlreadyReceiveVoteFromAssociate.class)
+	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
+	public ErrorCustom votingSessionAlreadyReceiveVoteFromAssociate(VotingSessionAlreadyReceiveVoteFromAssociate ex) {
+		String message = MessageFormat.format("with value {0} already vote on this agenda", ex.getAssociateId());
+		logger.warn(message);
+
+		ErrorCustom error = buildErrorCustom(new FieldError("associate", "associate_id", message));
+		return error;
+	}
+	
+	private ErrorCustom buildErrorCustom(FieldError... fieldErrors) {
+		Set<FieldErrorCustom> errorsCustom = Stream.of(fieldErrors).map(FieldErrorCustom::new).collect(Collectors.toSet());
+		ErrorCustom error = new ErrorCustom(errorsCustom);
+		return error;
+	}
+
 }
