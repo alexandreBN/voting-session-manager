@@ -2,8 +2,8 @@ package br.com.votingsessionmanager.votingsessionmanager.infrastructure.agenda;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import br.com.votingsessionmanager.votingsessionmanager.JSONObjectToStringBuilderConverter;
 import br.com.votingsessionmanager.votingsessionmanager.application.agenda.request.CreateAgendaRequest;
+import br.com.votingsessionmanager.votingsessionmanager.converter.JSONObjectToStringBuilderConverter;
 
 public class CreateAgendaRequestBuilder extends JSONObjectToStringBuilderConverter {
 

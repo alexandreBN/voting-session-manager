@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import javax.validation.ConstraintViolationException;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,13 +14,13 @@ import br.com.votingsessionmanager.votingsessionmanager.domain.associate.Associa
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-class AssociateRepositoryTest {
+public class AssociateRepositoryTest {
 
 	@Autowired
 	private AssociateRepository associateRepository;
 
 	@Test
-	void associateCanBeCreatedWithMinimumSizeValidData() {
+	public void associateCanBeCreatedWithMinimumSizeValidData() {
 		Associate associate = new Associate("A");
 		Associate associateSaved = associateRepository.save(associate);
 
@@ -28,7 +28,7 @@ class AssociateRepositoryTest {
 	}
 
 	@Test
-	void associateCanBeCreatedWithAnyValidData() {
+	public void associateCanBeCreatedWithAnyValidData() {
 		Associate associate = new Associate("Alexandre");
 		Associate associateSaved = associateRepository.save(associate);
 
@@ -36,21 +36,21 @@ class AssociateRepositoryTest {
 	}
 
 	@Test
-	void associateCantBeCreatedBecauseContainNullName() {
+	public void associateCantBeCreatedBecauseContainNullName() {
 		Associate associate = new Associate(null);
 
 		assertThrows(ConstraintViolationException.class, () -> associateRepository.save(associate), "The name field can't be null");
 	}
 
 	@Test
-	void associateCantBeCreatedBecauseContainEmptyName() {
+	public void associateCantBeCreatedBecauseContainEmptyName() {
 		Associate associate = new Associate(null);
 
 		assertThrows(ConstraintViolationException.class, () -> associateRepository.save(associate), "The name field can't be empty");
 	}
 
 	@Test
-	void associateCantBeCreatedBecauseContainsALongerNameThanIsSupported() {
+	public void associateCantBeCreatedBecauseContainsALongerNameThanIsSupported() {
 		Associate agenda = new Associate("ed Wacky League Antlez Broke the Stereo Neon Tide Bring Back Honesty Coalition Feedback Hand of Aces Keep Going Captain Let’s Pretend Lost State of Dance Paper Taxis Lunar Road Up Down Strange All and I Neon Sheep Eve Hornby Faye Bradley AJ Wilde Michael R");
 
 		assertThrows(ConstraintViolationException.class, () -> associateRepository.save(agenda), "The name field must be no longer than 255 characters");

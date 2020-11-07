@@ -15,6 +15,18 @@ public class OpenVotingSessionTimeLimitRequest {
 	@PositiveOrZero
 	private Integer minutes = 0;
 
+	@SuppressWarnings("unused")
+	private OpenVotingSessionTimeLimitRequest() {
+
+	}
+
+	public OpenVotingSessionTimeLimitRequest(@PositiveOrZero Integer days, @PositiveOrZero Integer hours,
+			@PositiveOrZero Integer minutes) {
+		this.days = days;
+		this.hours = hours;
+		this.minutes = minutes;
+	}
+
 	public long getDays() {
 		return days;
 	}
@@ -29,6 +41,10 @@ public class OpenVotingSessionTimeLimitRequest {
 
 	public LocalDateTime duration() {
 		return LocalDateTime.now().plusDays(days).plusHours(hours).plusMinutes(minutes);
+	}
+	
+	public boolean isNotDefinedValues() {
+		return days == 0 && hours == 0 && minutes == 0;
 	}
 
 	@Override

@@ -2,11 +2,19 @@ package br.com.votingsessionmanager.votingsessionmanager.application.votingsessi
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class OpenVotingSessionResponse {
 
 	private Long id;
 	private OpenVotingSessionAgendaResponse agenda;
+
+	@JsonProperty("open_until")
 	private LocalDateTime openUntil;
+
+	@SuppressWarnings("unused")
+	private OpenVotingSessionResponse() {
+	}
 
 	public OpenVotingSessionResponse(Long id, Long agendaId, LocalDateTime openUntil) {
 		this.id = id;
@@ -18,24 +26,12 @@ public class OpenVotingSessionResponse {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public OpenVotingSessionAgendaResponse getAgenda() {
 		return agenda;
 	}
 
-	public void setAgenda(OpenVotingSessionAgendaResponse agenda) {
-		this.agenda = agenda;
-	}
-
 	public LocalDateTime getOpenUntil() {
 		return openUntil;
-	}
-
-	public void setOpenUntil(LocalDateTime openUntil) {
-		this.openUntil = openUntil;
 	}
 
 }

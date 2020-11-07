@@ -19,6 +19,11 @@ public class VotingSessionResult {
 	@JsonProperty("open_until")
 	private LocalDateTime openUntil;
 
+	@SuppressWarnings("unused")
+	private VotingSessionResult() {
+
+	}
+
 	public VotingSessionResult(String agenda, Integer totalVotes, Integer totalVotesInFavor, Integer totalVotesAgainst, LocalDateTime openUntil) {
 		this.agenda = agenda;
 		this.totalVotes = totalVotes;

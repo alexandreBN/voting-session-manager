@@ -3,6 +3,11 @@ package br.com.votingsessionmanager.votingsessionmanager.application.votingsessi
 public class OpenVotingSessionAgendaResponse {
 	private Long id;
 
+	@SuppressWarnings("unused")
+	private OpenVotingSessionAgendaResponse() {
+		
+	}
+
 	public OpenVotingSessionAgendaResponse(Long id) {
 		this.id = id;
 	}

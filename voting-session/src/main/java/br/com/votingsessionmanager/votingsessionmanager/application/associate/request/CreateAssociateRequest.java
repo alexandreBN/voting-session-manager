@@ -12,6 +12,15 @@ public class CreateAssociateRequest {
 	@Length(max = 255)
 	private String name;
 
+	@SuppressWarnings("unused")
+	private CreateAssociateRequest() {
+
+	}
+
+	public CreateAssociateRequest(@NotBlank @Length(max = 255) String name) {
+		this.name = name;
+	}
+
 	public String getName() {
 		return name;
 	}

@@ -26,6 +26,18 @@ public class VoteRequest {
 	@VoteTypeSubSet(anyOf = { YES, NO })
 	private VoteType vote;
 
+	@SuppressWarnings("unused")
+	private VoteRequest() {
+
+	}
+
+	public VoteRequest(@NotNull @Positive Long associateId, @NotNull @Positive Long agendaId,
+			@VoteTypeSubSet(anyOf = { YES, NO }) VoteType vote) {
+		this.associateId = associateId;
+		this.agendaId = agendaId;
+		this.vote = vote;
+	}
+
 	public Long getAssociateId() {
 		return associateId;
 	}
