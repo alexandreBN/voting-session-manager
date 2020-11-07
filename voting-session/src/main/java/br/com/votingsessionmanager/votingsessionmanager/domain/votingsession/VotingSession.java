@@ -67,4 +67,15 @@ public class VotingSession {
 		this.agenda.getVotes().add(vote);
 	}
 
+	public VotingSessionResult getResult() {
+		int totalVotes = agenda.getVotes().size();
+		int totalVotesInFavor = agenda.getVotes().stream()
+			.filter(vote -> vote.getType().isInFavor())
+			.collect(Collectors.toSet())
+			.size();
+		int totalVotesAgainst = totalVotes - totalVotesInFavor;
+
+		VotingSessionResult result = new VotingSessionResult(agenda.getName(), totalVotes, totalVotesInFavor, totalVotesAgainst, openUntil);
+		return result;
+	}
 }
