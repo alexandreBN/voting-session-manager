@@ -17,14 +17,16 @@ import javax.validation.Payload;
 
 import br.com.votingsessionmanager.votingsessionmanager.domain.agenda.VoteType;
 
-@Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
+@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 @Retention(RUNTIME)
 @Documented
 @Constraint(validatedBy = VoteTypeSubSetValidator.class)
 public @interface VoteTypeSubSet {
-    VoteType[] anyOf();
-    String message() default "must be any of {anyOf}";
-    Class<?>[] groups() default {};
-    Class<? extends Payload>[] payload() default {};
-}
+	VoteType[] anyOf();
 
+	String message() default "must be any of {anyOf}";
+
+	Class<?>[] groups() default {};
+
+	Class<? extends Payload>[] payload() default {};
+}

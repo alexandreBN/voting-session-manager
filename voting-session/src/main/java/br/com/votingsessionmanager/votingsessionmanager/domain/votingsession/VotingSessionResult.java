@@ -19,8 +19,7 @@ public class VotingSessionResult {
 	@JsonProperty("open_until")
 	private LocalDateTime openUntil;
 
-	public VotingSessionResult(String agenda, Integer totalVotes, Integer totalVotesInFavor, Integer totalVotesAgainst,
-			LocalDateTime openUntil) {
+	public VotingSessionResult(String agenda, Integer totalVotes, Integer totalVotesInFavor, Integer totalVotesAgainst, LocalDateTime openUntil) {
 		this.agenda = agenda;
 		this.totalVotes = totalVotes;
 		votes = new HashMap<>();

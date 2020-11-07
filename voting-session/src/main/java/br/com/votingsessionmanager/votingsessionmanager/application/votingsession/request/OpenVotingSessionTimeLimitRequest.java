@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import javax.validation.constraints.PositiveOrZero;
 
-public class VotingSessionTimeLimitRequest {
+public class OpenVotingSessionTimeLimitRequest {
 
 	@PositiveOrZero
 	private Integer days = 0;
@@ -29,6 +29,11 @@ public class VotingSessionTimeLimitRequest {
 
 	public LocalDateTime duration() {
 		return LocalDateTime.now().plusDays(days).plusHours(hours).plusMinutes(minutes);
+	}
+
+	@Override
+	public String toString() {
+		return "OpenVotingSessionTimeLimitRequest [days=" + days + ", hours=" + hours + ", minutes=" + minutes + "]";
 	}
 
 }

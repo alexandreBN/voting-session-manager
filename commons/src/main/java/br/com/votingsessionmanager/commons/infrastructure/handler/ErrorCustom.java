@@ -1,6 +1,7 @@
 package br.com.votingsessionmanager.commons.infrastructure.handler;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class ErrorCustom {
 	private Set<FieldErrorCustom> errors;
@@ -12,4 +13,9 @@ public class ErrorCustom {
 	public Set<FieldErrorCustom> getErrors() {
 		return errors;
 	}
+
+	public Set<String> getErrorMessages() {
+		return errors.stream().map(FieldErrorCustom::getErrorDescription).collect(Collectors.toSet());
+	}
+
 }

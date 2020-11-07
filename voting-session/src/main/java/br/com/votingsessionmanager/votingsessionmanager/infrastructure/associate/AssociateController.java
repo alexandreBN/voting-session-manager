@@ -1,6 +1,7 @@
 package br.com.votingsessionmanager.votingsessionmanager.infrastructure.associate;
 
 import java.net.URI;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -21,13 +22,21 @@ import br.com.votingsessionmanager.votingsessionmanager.application.associate.re
 import br.com.votingsessionmanager.votingsessionmanager.domain.associate.Associate;
 
 @RestController
-@RequestMapping("/associate")
+@RequestMapping("/associates")
 public class AssociateController {
 
 	@Autowired
 	private AssociateRepository repository;
 
 	private static final Logger logger = LoggerFactory.getLogger(AssociateController.class);
+
+	@GetMapping
+	public List<Associate> findAll() {
+		logger.warn("Attempt to get all associates");
+		List<Associate> associates = repository.findAll();
+		logger.warn("Associates has been returned with success");
+		return associates;
+	}
 
 	@GetMapping("/{id}")
 	public Associate findById(@PathVariable Long id) throws InvalidAssociateResourceException {

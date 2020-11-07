@@ -6,6 +6,7 @@ public class VotingSessionAreNotAbleToReceiveVotesOnAgenda extends Exception {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
 	private Long agendaId;
 
 	public VotingSessionAreNotAbleToReceiveVotesOnAgenda(Long agendaId) {

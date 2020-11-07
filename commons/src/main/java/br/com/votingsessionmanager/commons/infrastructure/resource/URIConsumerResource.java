@@ -9,7 +9,7 @@ public class URIConsumerResource implements URIResource {
 	public URIConsumerResource(Long id) {
 		this.id = id;
 	}
-	
+
 	@Override
 	public URI getUri() {
 		URI uri = getCurrentRequestUri().path("/{id}").buildAndExpand(id).toUri();

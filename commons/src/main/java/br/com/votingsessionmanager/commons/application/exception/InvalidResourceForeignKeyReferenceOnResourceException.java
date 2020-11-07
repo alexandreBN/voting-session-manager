@@ -6,8 +6,11 @@ public abstract class InvalidResourceForeignKeyReferenceOnResourceException exte
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
 	public abstract String getMainResource();
+
 	public abstract String getForeignResource();
+
 	public abstract Long getForeignKeyResourceId();
 
 }

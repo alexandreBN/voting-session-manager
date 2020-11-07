@@ -2,7 +2,8 @@ package br.com.votingsessionmanager.votingsessionmanager.application.agenda.exce
 
 import br.com.votingsessionmanager.commons.application.exception.InvalidResourceForeignKeyReferenceOnResourceException;
 
-public class InvalidAgendaResourceReferenceOnVotingSessionException extends InvalidResourceForeignKeyReferenceOnResourceException {
+public class InvalidAgendaResourceReferenceOnVotingSessionException
+		extends InvalidResourceForeignKeyReferenceOnResourceException {
 
 	/**
 	 * 

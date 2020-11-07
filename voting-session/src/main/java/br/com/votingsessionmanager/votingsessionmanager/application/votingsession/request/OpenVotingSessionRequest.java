@@ -8,7 +8,7 @@ import javax.validation.constraints.Positive;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class VotingSessionRequest {
+public class OpenVotingSessionRequest {
 
 	@NotNull
 	@Positive
@@ -17,18 +17,18 @@ public class VotingSessionRequest {
 
 	@Valid
 	@JsonProperty("open_until")
-	private VotingSessionTimeLimitRequest openUntil;
+	private OpenVotingSessionTimeLimitRequest openUntil;
 
 	public Long getAgendaId() {
 		return agendaId;
 	}
 
-	public VotingSessionTimeLimitRequest getOpenUntil() {
+	public OpenVotingSessionTimeLimitRequest getOpenUntil() {
 		return openUntil;
 	}
 
 	public LocalDateTime duration() {
-		if(openUntil == null) return LocalDateTime.now().plusMinutes(1);
+		if (openUntil == null) return LocalDateTime.now().plusMinutes(1);
 		return openUntil.duration();
 	}
 

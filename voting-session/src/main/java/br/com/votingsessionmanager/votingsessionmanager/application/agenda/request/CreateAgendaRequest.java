@@ -12,12 +12,10 @@ public class CreateAgendaRequest {
 	@Length(max = 255)
 	private String name;
 
-	@NotBlank
 	@Length(max = 255)
 	private String description;
 
-	public CreateAgendaRequest(@NotBlank @Length(max = 255) String name,
-			@NotBlank @Length(max = 255) String description) {
+	public CreateAgendaRequest(@NotBlank @Length(max = 255) String name, @Length(max = 255) String description) {
 		this.name = name;
 		this.description = description;
 	}

@@ -6,6 +6,7 @@ public class VotingSessionAlreadyOpenedWithAgendaException extends RuntimeExcept
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
 	private Long agendaId;
 
 	public VotingSessionAlreadyOpenedWithAgendaException(Long agendaId) {

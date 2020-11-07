@@ -3,6 +3,7 @@ package br.com.votingsessionmanager.votingsessionmanager.domain.votingsession;
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,13 +22,14 @@ public class VotingSession {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "agenda_id")
 	private Agenda agenda;
 
 	@Column(name = "open_until")
 	private LocalDateTime openUntil;
 
+	@SuppressWarnings("unused")
 	private VotingSession() {
 	}
 
