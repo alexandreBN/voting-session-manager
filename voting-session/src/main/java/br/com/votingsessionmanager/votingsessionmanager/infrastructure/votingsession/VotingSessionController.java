@@ -6,6 +6,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,9 +21,11 @@ import br.com.votingsessionmanager.votingsessionmanager.application.agenda.excep
 import br.com.votingsessionmanager.votingsessionmanager.application.associate.exception.InvalidAssociateResourceReferenceException;
 import br.com.votingsessionmanager.votingsessionmanager.application.votingsession.OpenVotingSessionService;
 import br.com.votingsessionmanager.votingsessionmanager.application.votingsession.SaveAssociateVoteService;
+import br.com.votingsessionmanager.votingsessionmanager.application.votingsession.ShowResultOfVotingSessionAgendaService;
 import br.com.votingsessionmanager.votingsessionmanager.application.votingsession.request.VoteRequest;
 import br.com.votingsessionmanager.votingsessionmanager.application.votingsession.request.VotingSessionRequest;
 import br.com.votingsessionmanager.votingsessionmanager.domain.votingsession.VotingSession;
+import br.com.votingsessionmanager.votingsessionmanager.domain.votingsession.VotingSessionResult;
 
 @RestController
 @RequestMapping("/voting-session")
@@ -32,6 +36,15 @@ public class VotingSessionController {
 
 	@Autowired
 	private SaveAssociateVoteService saveAssociateVoteService;
+
+	@Autowired
+	private ShowResultOfVotingSessionAgendaService showResultOfVotingSessionAgendaService;
+	
+	@GetMapping("/agenda/{agendaId}/result")
+	public VotingSessionResult result(@PathVariable Long agendaId) throws InvalidAgendaResourceReferenceOnVotingSessionException {
+		VotingSessionResult result = showResultOfVotingSessionAgendaService.getResult(agendaId);
+		return result;
+	}
 
 	@PostMapping
 	public ResponseEntity<VotingSession> open(@RequestBody @Valid VotingSessionRequest request) throws InvalidAgendaResourceReferenceException {
