@@ -7,6 +7,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.com.votingsessionmanager.votingsessionmanager.domain.agenda.VoteType;
 
+/**
+ * The class {@code VotingSessionResult} is used to populated when application
+ * send response with voting session result
+ */
 public class VotingSessionResult {
 
 	private String agenda;
@@ -19,8 +23,12 @@ public class VotingSessionResult {
 	@JsonProperty("open_until")
 	private LocalDateTime openUntil;
 
-	public VotingSessionResult(String agenda, Integer totalVotes, Integer totalVotesInFavor, Integer totalVotesAgainst,
-			LocalDateTime openUntil) {
+	@SuppressWarnings("unused")
+	private VotingSessionResult() {
+
+	}
+
+	public VotingSessionResult(String agenda, Integer totalVotes, Integer totalVotesInFavor, Integer totalVotesAgainst, LocalDateTime openUntil) {
 		this.agenda = agenda;
 		this.totalVotes = totalVotes;
 		votes = new HashMap<>();

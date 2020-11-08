@@ -3,6 +3,7 @@ package br.com.votingsessionmanager.votingsessionmanager.domain.votingsession;
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,13 +22,14 @@ public class VotingSession {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "agenda_id")
 	private Agenda agenda;
 
 	@Column(name = "open_until")
 	private LocalDateTime openUntil;
 
+	@SuppressWarnings("unused")
 	private VotingSession() {
 	}
 
@@ -54,6 +56,12 @@ public class VotingSession {
 		return canReceiveVotes;
 	}
 
+	/**
+	 * Return condition whether associate with specified id already been vote on this agenda
+	 * 
+	 * @param associateId associate identifier
+	 * @return boolean value that indicate if associate with specified id already been vote on this agenda
+	 */
 	public boolean alreadyReceiveVotesAssociate(Long associateId) {
 		int numberOfCandidateVotes = agenda.getVotes().stream()
 			.filter(vote -> vote.getAssociate().getId().equals(associateId))
@@ -67,6 +75,12 @@ public class VotingSession {
 		this.agenda.getVotes().add(vote);
 	}
 
+	/**
+	 * Return voting session result data, it is a agenda name and total
+	 * number of votes (and on each vote category)
+	 * 
+	 * @return voting session result data
+	 */
 	public VotingSessionResult getResult() {
 		int totalVotes = agenda.getVotes().size();
 		int totalVotesInFavor = agenda.getVotes().stream()

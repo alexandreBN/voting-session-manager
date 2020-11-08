@@ -7,7 +7,7 @@ public enum VoteType {
 	public boolean isInFavor() {
 		return this.equals(YES);
 	}
-	
+
 	public boolean isAgainst() {
 		return this.equals(NO);
 	}

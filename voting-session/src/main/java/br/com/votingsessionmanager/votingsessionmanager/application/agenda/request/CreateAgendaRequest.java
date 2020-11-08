@@ -6,18 +6,20 @@ import org.hibernate.validator.constraints.Length;
 
 import br.com.votingsessionmanager.votingsessionmanager.domain.agenda.Agenda;
 
+/**
+ * The class {@code CreateAgendaRequest} is used populated when application
+ * receive request to create a new agenda 
+ */
 public class CreateAgendaRequest {
 
 	@NotBlank
 	@Length(max = 255)
 	private String name;
 
-	@NotBlank
 	@Length(max = 255)
 	private String description;
 
-	public CreateAgendaRequest(@NotBlank @Length(max = 255) String name,
-			@NotBlank @Length(max = 255) String description) {
+	public CreateAgendaRequest(@NotBlank @Length(max = 255) String name, @Length(max = 255) String description) {
 		this.name = name;
 		this.description = description;
 	}
@@ -30,6 +32,10 @@ public class CreateAgendaRequest {
 		return description;
 	}
 
+	/**
+	 * Parse {@code CreateAgendaRequest} to {@code Agenda}
+	 * @return {@Agenda} with same of {@code CreateAgendaRequest} class
+	 */
 	public Agenda toEntity() {
 		return new Agenda(name, description);
 	}

@@ -27,7 +27,18 @@ public class SaveAssociateVoteService {
 
 	@Autowired
 	private VotingSessionRepository votingSessionRepository;
-
+	
+	/**
+	 * Save associate vote on voting session, identified by agenda
+	 * 
+	 * @param request vote data
+	 * @return voting session identifier
+	 * @throws InvalidAgendaResourceReferenceException it will be throws if agenda reference is invalid
+	 * @throws InvalidAgendaResourceReferenceOnVotingSessionException it will be throws if informed agenda is not part of relation of voting session
+	 * @throws VotingSessionAreNotAbleToReceiveVotesOnAgenda it will be throws if open_until time is past from current date
+	 * @throws InvalidAssociateResourceReferenceException it will be throws if associate reference is invalid
+	 * @throws VotingSessionAlreadyReceiveVoteFromAssociate it will be throws if voting session already receive vote from informed associate
+	 */
 	public Long save(VoteRequest request) throws InvalidAgendaResourceReferenceException, InvalidAgendaResourceReferenceOnVotingSessionException, VotingSessionAreNotAbleToReceiveVotesOnAgenda, InvalidAssociateResourceReferenceException, VotingSessionAlreadyReceiveVoteFromAssociate {
 
 		VotingSession votingSession = votingSessionRepository.findByAgendaId(request.getAgendaId()).orElseThrow(() -> new InvalidAgendaResourceReferenceOnVotingSessionException(request.getAgendaId()));

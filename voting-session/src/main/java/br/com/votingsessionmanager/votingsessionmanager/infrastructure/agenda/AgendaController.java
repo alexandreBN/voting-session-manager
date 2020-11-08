@@ -1,6 +1,7 @@
 package br.com.votingsessionmanager.votingsessionmanager.infrastructure.agenda;
 
 import java.net.URI;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -21,13 +22,21 @@ import br.com.votingsessionmanager.votingsessionmanager.application.agenda.reque
 import br.com.votingsessionmanager.votingsessionmanager.domain.agenda.Agenda;
 
 @RestController
-@RequestMapping("/agenda")
+@RequestMapping("/agendas")
 public class AgendaController {
 
 	@Autowired
 	private AgendaRepository repository;
 
 	private static final Logger logger = LoggerFactory.getLogger(AgendaController.class);
+
+	@GetMapping
+	public List<Agenda> findAll() {
+		logger.warn("Attempt to get all agendas");
+		List<Agenda> agendas = repository.findAll();
+		logger.warn("Agendas has been returned with success");
+		return agendas;
+	}
 
 	@GetMapping("/{id}")
 	public Agenda findById(@PathVariable Long id) throws InvalidAgendaResourceException {

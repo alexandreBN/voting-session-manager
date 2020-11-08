@@ -2,6 +2,11 @@ package br.com.votingsessionmanager.votingsessionmanager.application.agenda.exce
 
 import br.com.votingsessionmanager.commons.application.exception.InvalidResourceForeignKeyReferenceOnResourceException;
 
+/**
+ * The class {@code InvalidAgendaResourceReferenceOnVotingSessionException} is a form of
+ * {@code Throwable} that indicates that foreign agenda resource referenced on voting session resource isn't present and this 
+ * conditions that a reasonable application might want to catch.
+ */
 public class InvalidAgendaResourceReferenceOnVotingSessionException extends InvalidResourceForeignKeyReferenceOnResourceException {
 
 	/**

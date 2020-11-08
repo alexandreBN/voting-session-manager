@@ -2,6 +2,11 @@ package br.com.votingsessionmanager.votingsessionmanager.application.associate.e
 
 import br.com.votingsessionmanager.commons.application.exception.InvalidResourceReferenceException;
 
+/**
+ * The class {@code InvalidAssociateResourceReferenceException} is a form of {@code Throwable}
+ * that indicates that referenced associate resource isn't present and this condition 
+ * can be reasonable to application might want to catch.
+ */
 public class InvalidAssociateResourceReferenceException extends InvalidResourceReferenceException {
 
 	/**

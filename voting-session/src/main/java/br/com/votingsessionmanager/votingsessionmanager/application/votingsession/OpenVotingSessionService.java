@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.votingsessionmanager.commons.application.exception.sessionvote.VotingSessionAlreadyOpenedWithAgendaException;
 import br.com.votingsessionmanager.votingsessionmanager.application.agenda.exception.InvalidAgendaResourceReferenceException;
-import br.com.votingsessionmanager.votingsessionmanager.application.votingsession.request.VotingSessionRequest;
+import br.com.votingsessionmanager.votingsessionmanager.application.votingsession.request.OpenVotingSessionRequest;
 import br.com.votingsessionmanager.votingsessionmanager.domain.agenda.Agenda;
 import br.com.votingsessionmanager.votingsessionmanager.domain.votingsession.VotingSession;
 import br.com.votingsessionmanager.votingsessionmanager.infrastructure.agenda.AgendaRepository;
@@ -24,7 +24,14 @@ public class OpenVotingSessionService {
 	@Autowired
 	private AgendaRepository agendaRepository;
 
-	public VotingSession open(@Valid VotingSessionRequest request) throws InvalidAgendaResourceReferenceException {
+	/**
+	 * Open a voting session based on agenda
+	 * 
+	 * @param request data of voting session that are been opened
+	 * @return voting session data that are been opened
+	 * @throws InvalidAgendaResourceReferenceException it will be throws if agenda reference is invalid
+	 */
+	public VotingSession open(@Valid OpenVotingSessionRequest request) throws InvalidAgendaResourceReferenceException {
 		Agenda agenda = agendaRepository.findById(request.getAgendaId()).orElseThrow(() -> new InvalidAgendaResourceReferenceException(request.getAgendaId()));
 		Optional<VotingSession> votingSessionWithSpecificAgenda = votingSessionRepository.findByAgendaId(request.getAgendaId());
 
