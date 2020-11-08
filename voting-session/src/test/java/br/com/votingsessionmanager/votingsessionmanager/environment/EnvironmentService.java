@@ -5,10 +5,10 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.votingsessionmanager.votingsessionmanager.infrastructure.agenda.AgendaRepository;
-import br.com.votingsessionmanager.votingsessionmanager.infrastructure.agenda.VoteRepository;
-import br.com.votingsessionmanager.votingsessionmanager.infrastructure.associate.AssociateRepository;
-import br.com.votingsessionmanager.votingsessionmanager.infrastructure.votingsession.VotingSessionRepository;
+import br.com.votingsessionmanager.votingsession.infrastructure.agenda.AgendaRepository;
+import br.com.votingsessionmanager.votingsession.infrastructure.agenda.VoteRepository;
+import br.com.votingsessionmanager.votingsession.infrastructure.associate.AssociateRepository;
+import br.com.votingsessionmanager.votingsession.infrastructure.votingsession.VotingSessionRepository;
 
 @Service
 public class EnvironmentService {

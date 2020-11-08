@@ -19,12 +19,12 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import br.com.votingsessionmanager.votingsessionmanager.application.votingsession.request.OpenVotingSessionResponse;
-import br.com.votingsessionmanager.votingsessionmanager.domain.agenda.Agenda;
-import br.com.votingsessionmanager.votingsessionmanager.domain.agenda.VoteType;
-import br.com.votingsessionmanager.votingsessionmanager.domain.associate.Associate;
-import br.com.votingsessionmanager.votingsessionmanager.domain.votingsession.VotingSession;
-import br.com.votingsessionmanager.votingsessionmanager.domain.votingsession.VotingSessionResult;
+import br.com.votingsessionmanager.votingsession.application.votingsession.request.OpenVotingSessionResponse;
+import br.com.votingsessionmanager.votingsession.domain.agenda.Agenda;
+import br.com.votingsessionmanager.votingsession.domain.agenda.VoteType;
+import br.com.votingsessionmanager.votingsession.domain.associate.Associate;
+import br.com.votingsessionmanager.votingsession.domain.votingsession.VotingSession;
+import br.com.votingsessionmanager.votingsession.domain.votingsession.VotingSessionResult;
 import br.com.votingsessionmanager.votingsessionmanager.environment.EnvironmentService;
 
 @SpringBootTest

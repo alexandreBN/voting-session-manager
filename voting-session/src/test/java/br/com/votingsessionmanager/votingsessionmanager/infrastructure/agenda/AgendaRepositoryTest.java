@@ -11,7 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import br.com.votingsessionmanager.votingsessionmanager.domain.agenda.Agenda;
+import br.com.votingsessionmanager.votingsession.domain.agenda.Agenda;
+import br.com.votingsessionmanager.votingsession.infrastructure.agenda.AgendaRepository;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
