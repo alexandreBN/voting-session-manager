@@ -13,6 +13,6 @@ public abstract class InvalidResourceException extends Exception {
 
 	public abstract String getResource();
 
-	public abstract Long getId();
+	public abstract <T> T getId();
 
 }

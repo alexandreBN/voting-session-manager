@@ -19,6 +19,7 @@ import org.springframework.web.context.request.WebRequest;
 import br.com.votingsessionmanager.commons.application.exception.InvalidResourceException;
 import br.com.votingsessionmanager.commons.application.exception.InvalidResourceForeignKeyReferenceOnResourceException;
 import br.com.votingsessionmanager.commons.application.exception.InvalidResourceReferenceException;
+import br.com.votingsessionmanager.commons.application.exception.associate.AssociateUnableToVoteException;
 import br.com.votingsessionmanager.commons.application.exception.sessionvote.VotingSessionAlreadyOpenedWithAgendaException;
 import br.com.votingsessionmanager.commons.application.exception.sessionvote.VotingSessionAlreadyReceiveVoteFromAssociate;
 import br.com.votingsessionmanager.commons.application.exception.sessionvote.VotingSessionAreNotAbleToReceiveVotesOnAgenda;
@@ -43,13 +44,13 @@ public class ErrorHandler {
 	@ExceptionHandler(InvalidResourceException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public void invalidResourceException(InvalidResourceException ex) {
-		logger.error("Unable to get resource {} with id {} ", ex.getResource(), ex.getId());
+		logger.error("Unable to get resource {} with id {} ", parse(ex.getResource()), parse(ex.getId()));
 	}
 
 	@ExceptionHandler(InvalidResourceReferenceException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ErrorCustom invalidResourceRefereceException(InvalidResourceReferenceException ex) {
-		String message = MessageFormat.format("with value {0} does not exists", ex.getId());
+		String message = MessageFormat.format("with value {0} does not exists", parse(ex.getId()));
 		ErrorCustom error = buildErrorCustom(new FieldError("agenda_id", ex.getResource(), message));
 		logErrorMessages(error);
 		return error;
@@ -58,8 +59,8 @@ public class ErrorHandler {
 	@ExceptionHandler(InvalidResourceForeignKeyReferenceOnResourceException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ErrorCustom invalidAgendaResourceReferenceOnVotingSessionException(InvalidResourceForeignKeyReferenceOnResourceException ex) {
-		String message = MessageFormat.format("with value {0} is not present on {1} resource", ex.getForeignKeyResourceId(), ex.getMainResource());
-		ErrorCustom error = buildErrorCustom(new FieldError("resource_id", ex.getForeignResource(),message));
+		String message = MessageFormat.format("with value {0} is not present on {1} resource", parse(ex.getForeignKeyResourceId()), ex.getMainResource());
+		ErrorCustom error = buildErrorCustom(new FieldError("resource_id", parse(ex.getForeignResource()),message));
 		logErrorMessages(error);
 		return error;
 	}
@@ -67,7 +68,7 @@ public class ErrorHandler {
 	@ExceptionHandler(VotingSessionAlreadyOpenedWithAgendaException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ErrorCustom votingSessionAlreadyOpenedWithAgendaException(VotingSessionAlreadyOpenedWithAgendaException ex) {
-		String message = MessageFormat.format("{0} already opened", ex.getAgendaId());
+		String message = MessageFormat.format("{0} already opened", parse(ex.getAgendaId()));
 		ErrorCustom error = buildErrorCustom(new FieldError("agenda", "agenda_id", message));
 		logErrorMessages(error);
 		return error;
@@ -76,7 +77,7 @@ public class ErrorHandler {
 	@ExceptionHandler(VotingSessionAreNotAbleToReceiveVotesOnAgenda.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ErrorCustom votingSessionAreNotAbleToReceiveVotesOnAgenda(VotingSessionAreNotAbleToReceiveVotesOnAgenda ex) {
-		String message = MessageFormat.format("with value {0} is not able to accept more votes because voting_session has been closed", ex.getAgendaId());
+		String message = MessageFormat.format("with value {0} is not able to accept more votes because voting_session has been closed", parse(ex.getAgendaId()));
 		ErrorCustom error = buildErrorCustom(new FieldError("agenda", "agenda_id", message));
 		logErrorMessages(error);
 		return error;
@@ -85,7 +86,7 @@ public class ErrorHandler {
 	@ExceptionHandler(VotingSessionAlreadyReceiveVoteFromAssociate.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ErrorCustom votingSessionAlreadyReceiveVoteFromAssociate(VotingSessionAlreadyReceiveVoteFromAssociate ex) {
-		String message = MessageFormat.format("with value {0} already vote on this agenda", ex.getAssociateId());
+		String message = MessageFormat.format("with value {0} already vote on this agenda", parse(ex.getAssociateId()));
 		ErrorCustom error = buildErrorCustom(new FieldError("associate", "associate_id", message));
 		logErrorMessages(error);
 		return error;
@@ -100,6 +101,15 @@ public class ErrorHandler {
 		return error;
 	}
 
+	@ExceptionHandler(AssociateUnableToVoteException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ErrorCustom associateUnableToVoteException(AssociateUnableToVoteException ex) {
+		String message = MessageFormat.format("with value {0} is unable to vote on this agenda", parse(ex.getAssociateId()));
+		ErrorCustom error = buildErrorCustom(new FieldError("associate", "associate_id", message));
+		logErrorMessages(error);
+		return error;
+	}
+	
 	@ExceptionHandler(Exception.class)
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	public void internalServerError(Exception ex) {
@@ -114,6 +124,10 @@ public class ErrorHandler {
 
 	private void logErrorMessages(ErrorCustom errorCustom) {
 		errorCustom.getErrorMessages().stream().forEach(errorMessage -> logger.error(errorMessage));
+	}
+
+	private <T> String parse(T identifier) {
+		return "" + identifier;
 	}
 
 }

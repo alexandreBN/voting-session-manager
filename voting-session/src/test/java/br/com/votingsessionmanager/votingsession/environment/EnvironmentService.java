@@ -1,4 +1,4 @@
-package br.com.votingsessionmanager.votingsessionmanager.environment;
+package br.com.votingsessionmanager.votingsession.environment;
 
 import java.util.Random;
 

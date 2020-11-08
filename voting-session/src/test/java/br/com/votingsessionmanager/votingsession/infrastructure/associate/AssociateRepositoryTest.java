@@ -1,4 +1,4 @@
-package br.com.votingsessionmanager.votingsessionmanager.infrastructure.associate;
+package br.com.votingsessionmanager.votingsession.infrastructure.associate;
 
 import static org.junit.jupiter.api.Assertions.*;
 

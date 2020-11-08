@@ -1,10 +1,10 @@
-package br.com.votingsessionmanager.votingsessionmanager.infrastructure.votingsession;
+package br.com.votingsessionmanager.votingsession.infrastructure.votingsession;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import br.com.votingsessionmanager.votingsession.application.votingsession.request.OpenVotingSessionRequest;
 import br.com.votingsessionmanager.votingsession.application.votingsession.request.OpenVotingSessionTimeLimitRequest;
-import br.com.votingsessionmanager.votingsessionmanager.converter.JSONObjectToStringBuilderConverter;
+import br.com.votingsessionmanager.votingsession.converter.JSONObjectToStringBuilderConverter;
 
 public class OpenVotingSessionRequestBuilder extends JSONObjectToStringBuilderConverter {
 

@@ -13,13 +13,13 @@ import br.com.votingsessionmanager.votingsession.application.votingsession.valid
 import br.com.votingsessionmanager.votingsession.domain.agenda.VoteType;
 
 /**
- * The class {@code VoteRequest} is populated when application
- * receive request to save the vote on agenda present on voting session 
+ * The class {@code VoteExternalAssociateRequest} is populated when application receive request
+ * to save the vote on agenda present on voting session
  */
-public class VoteRequest implements GenericVoteRequest {
+public class VoteExternalAssociateRequest implements GenericVoteRequest {
 
 	@NotNull
-	@Positive
+	@NotBlank
 	@JsonProperty("associate_id")
 	private String associateId;
 
@@ -32,11 +32,11 @@ public class VoteRequest implements GenericVoteRequest {
 	private VoteType vote;
 
 	@SuppressWarnings("unused")
-	private VoteRequest() {
+	private VoteExternalAssociateRequest() {
 
 	}
 
-	public VoteRequest(@NotNull @NotBlank String associateId, @NotNull @Positive Long agendaId,
+	public VoteExternalAssociateRequest(@NotNull @NotBlank String associateId, @NotNull @Positive Long agendaId,
 			@VoteTypeSubSet(anyOf = { YES, NO }) VoteType vote) {
 		this.associateId = associateId;
 		this.agendaId = agendaId;

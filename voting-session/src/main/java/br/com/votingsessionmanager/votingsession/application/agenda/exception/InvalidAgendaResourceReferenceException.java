@@ -22,6 +22,7 @@ public class InvalidAgendaResourceReferenceException extends InvalidResourceRefe
 		return "agenda_id";
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Long getId() {
 		return id;

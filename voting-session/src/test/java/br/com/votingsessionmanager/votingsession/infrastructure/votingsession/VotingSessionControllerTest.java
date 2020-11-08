@@ -1,4 +1,4 @@
-package br.com.votingsessionmanager.votingsessionmanager.infrastructure.votingsession;
+package br.com.votingsessionmanager.votingsession.infrastructure.votingsession;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -25,7 +25,7 @@ import br.com.votingsessionmanager.votingsession.domain.agenda.VoteType;
 import br.com.votingsessionmanager.votingsession.domain.associate.Associate;
 import br.com.votingsessionmanager.votingsession.domain.votingsession.VotingSession;
 import br.com.votingsessionmanager.votingsession.domain.votingsession.VotingSessionResult;
-import br.com.votingsessionmanager.votingsessionmanager.environment.EnvironmentService;
+import br.com.votingsessionmanager.votingsession.environment.EnvironmentService;
 
 @SpringBootTest
 @AutoConfigureMockMvc
