@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -69,7 +70,7 @@ public class VotingSessionController {
 		return ResponseEntity.created(uri).body(votingSessionOpenedResponse);
 	}
 
-	@PostMapping("/vote")
+	@PutMapping("/vote")
 	public Long vote(@RequestBody @Valid VoteRequest request) throws Exception {
 		logger.warn("Attempt to insert vote from associate with id {} on agenda with id {} ", request.getAssociateId(), request.getAgendaId());
 		Long votingSessionIdThatReceivedVote = saveAssociateVoteService.save(request, searchInternalDatabaseAssociate);
@@ -77,7 +78,7 @@ public class VotingSessionController {
 		return votingSessionIdThatReceivedVote;
 	}
 
-	@PostMapping("/vote/app")
+	@PutMapping("/integration-api/vote")
 	public Long voteByExternalApp(@RequestBody @Valid VoteExternalAssociateRequest request) throws Exception {
 		logger.warn("Attempt to insert vote from external associate with id {} on agenda with id {} ", request.getAssociateId(), request.getAgendaId());
 		Long votingSessionIdThatReceivedVote = saveAssociateVoteService.save(request, searchExternalAssociate);

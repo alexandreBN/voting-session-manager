@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -115,7 +116,12 @@ public class ErrorHandler {
 	public void internalServerError(Exception ex) {
 		logger.error("Internal Server Error", ex);
 	}
-	
+
+	@ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+	@ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
+	public void httpRequestMethodNotSupportedException() {
+	}
+
 	private ErrorCustom buildErrorCustom(FieldError... fieldErrors) {
 		Set<FieldErrorCustom> errorsCustom = Stream.of(fieldErrors).map(FieldErrorCustom::new).collect(Collectors.toSet());
 		ErrorCustom error = new ErrorCustom(errorsCustom);
