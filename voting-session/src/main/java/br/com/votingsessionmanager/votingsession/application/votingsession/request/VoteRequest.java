@@ -43,6 +43,7 @@ public class VoteRequest implements GenericVoteRequest {
 		this.vote = vote;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public String getAssociateId() {
 		return associateId;

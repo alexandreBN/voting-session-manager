@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Reforma Administrativa\",\n    \"description\": \"Hoje será votada a Reforma Administrativa\"\n}",
+							"raw": "{\n    \"name\": \"Padrões de Desenvolvimento de Software\",\n    \"description\": \"O uso de um padrão de codificação também aumenta a produtividade num projeto, uma vez que a comunicação dentro da equipe de desenvolvimento fica mais fácil.\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -148,11 +148,11 @@
 						{
 							"name": "Add Vote",
 							"request": {
-								"method": "POST",
+								"method": "PUT",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"associate_id\": {{associateId}},\n    \"agenda_id\": {{agendaId}},\n    \"vote\": \"YES\"\n}",
+									"raw": "{\n    \"associate_id\": {{associateId}},\n    \"agenda_id\": {{agendaId}},\n    \"vote\": \"NO\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -171,6 +171,34 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Add External Vote",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"associate_id\": {{associateId}},\n    \"agenda_id\": {{agendaId}},\n    \"vote\": \"YES\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{voting-session-api}}/voting-sessions/integration-api/vote",
+									"host": [
+										"{{voting-session-api}}"
+									],
+									"path": [
+										"voting-sessions",
+										"integration-api",
+										"vote"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -183,7 +211,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"agenda_id\": {{agendaId}},\n    \"open_until\": {\n        \"days\": 0,\n        \"hours\": 0,\n        \"minutes\": 0\n    }\n}",
+							"raw": "{\n    \"agenda_id\": {{agendaId}},\n    \"open_until\": {\n        \"days\": 0,\n        \"hours\": 1,\n        \"minutes\": 0\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -250,17 +278,17 @@
 	],
 	"variable": [
 		{
-			"id": "1fc48a6a-9207-462f-95aa-92d93816009f",
+			"id": "b9553144-09af-4de7-9c04-9f1b760cec1f",
 			"key": "voting-session-api",
 			"value": ""
 		},
 		{
-			"id": "b86ade47-5c98-4458-9d12-b47bb01ebfb8",
+			"id": "efeb42d9-d44d-4219-8147-1f58170fcc5e",
 			"key": "agendaId",
 			"value": ""
 		},
 		{
-			"id": "faab034a-a8d9-4b76-a73b-03e773064653",
+			"id": "5d8b7ba6-8020-4396-abff-21cbaad4d139",
 			"key": "associateId",
 			"value": ""
 		}

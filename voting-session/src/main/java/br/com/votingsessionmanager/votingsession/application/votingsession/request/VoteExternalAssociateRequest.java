@@ -7,6 +7,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
+import org.hibernate.validator.constraints.Length;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.com.votingsessionmanager.votingsession.application.votingsession.validator.VoteTypeSubSet;
@@ -20,6 +22,7 @@ public class VoteExternalAssociateRequest implements GenericVoteRequest {
 
 	@NotNull
 	@NotBlank
+	@Length(min = 11, max = 11)
 	@JsonProperty("associate_id")
 	private String associateId;
 
@@ -36,13 +39,14 @@ public class VoteExternalAssociateRequest implements GenericVoteRequest {
 
 	}
 
-	public VoteExternalAssociateRequest(@NotNull @NotBlank String associateId, @NotNull @Positive Long agendaId,
+	public VoteExternalAssociateRequest(@NotNull @NotBlank 	@Length(min = 11, max = 11) String associateId, @NotNull @Positive Long agendaId,
 			@VoteTypeSubSet(anyOf = { YES, NO }) VoteType vote) {
 		this.associateId = associateId;
 		this.agendaId = agendaId;
 		this.vote = vote;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public String getAssociateId() {
 		return associateId;
