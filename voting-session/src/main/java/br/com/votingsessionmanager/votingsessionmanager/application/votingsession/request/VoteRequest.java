@@ -12,7 +12,7 @@ import br.com.votingsessionmanager.votingsessionmanager.application.votingsessio
 import br.com.votingsessionmanager.votingsessionmanager.domain.agenda.VoteType;
 
 /**
- * The class {@code VoteRequest} is used to populated when application
+ * The class {@code VoteRequest} is populated when application
  * receive request to save the vote on agenda present on voting session 
  */
 public class VoteRequest {

@@ -3,6 +3,9 @@ package br.com.votingsessionmanager.commons.infrastructure.handler;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * The class {@code ErrorCustom} is used to return errors
+ */
 public class ErrorCustom {
 	private Set<FieldErrorCustom> errors;
 

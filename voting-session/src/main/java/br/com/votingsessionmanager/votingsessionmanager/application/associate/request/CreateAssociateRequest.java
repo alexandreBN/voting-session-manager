@@ -7,8 +7,8 @@ import org.hibernate.validator.constraints.Length;
 import br.com.votingsessionmanager.votingsessionmanager.domain.associate.Associate;
 
 /**
- * The class {@code CreateAssociateRequest} is used to populated when application
- * receive request to create a new associate 
+ * The class {@code CreateAssociateRequest} is populated when application
+ * receive request to create a new associate
  */
 public class CreateAssociateRequest {
 

@@ -1,5 +1,10 @@
 package br.com.votingsessionmanager.commons.application.exception.sessionvote;
 
+/**
+ * The class {@code VotingSessionAlreadyOpenedWithAgendaException} indicate
+ * that voting session resource referenced (based on agenda identifer) is already opened and this condition 
+ * can be reasonable to application might want to catch.
+ */
 public class VotingSessionAlreadyOpenedWithAgendaException extends RuntimeException {
 
 	/**

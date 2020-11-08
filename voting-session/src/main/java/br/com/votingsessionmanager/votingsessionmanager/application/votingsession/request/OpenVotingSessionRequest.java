@@ -9,7 +9,7 @@ import javax.validation.constraints.Positive;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The class {@code OpenVotingSessionRequest} is used to populated when application
+ * The class {@code OpenVotingSessionRequest} is populated when application
  * receive request to open a voting session based on agenda 
  */
 public class OpenVotingSessionRequest {

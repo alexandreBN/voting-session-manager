@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import javax.validation.constraints.PositiveOrZero;
 
 /**
- * The class {@code OpenVotingSessionTimeLimitRequest} is used to populated when application
+ * The class {@code OpenVotingSessionTimeLimitRequest} is populated when application
  * receive request to open a voting session (and define open_until field) based on agenda 
  */
 public class OpenVotingSessionTimeLimitRequest {

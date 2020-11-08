@@ -4,7 +4,7 @@ import br.com.votingsessionmanager.commons.application.exception.InvalidResource
 
 /**
  * The class {@code InvalidAgendaResourceReferenceException} is a form of {@code Throwable}
- * that indicates that referenced agenda resource aren't present and this condition 
+ * that indicates that referenced agenda resource isn't present and this condition 
  * can be reasonable to application might want to catch.
  */
 public class InvalidAgendaResourceReferenceException extends InvalidResourceReferenceException {

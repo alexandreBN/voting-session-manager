@@ -2,6 +2,10 @@ package br.com.votingsessionmanager.commons.infrastructure.resource;
 
 import java.net.URI;
 
+/**
+ * The class {@code URIConsumerResource} is used to 
+ * build a resource URI data 
+ */
 public class URIConsumerResource implements URIResource {
 
 	private Long id;

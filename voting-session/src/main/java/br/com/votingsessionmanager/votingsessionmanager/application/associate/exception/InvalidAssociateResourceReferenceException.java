@@ -4,7 +4,7 @@ import br.com.votingsessionmanager.commons.application.exception.InvalidResource
 
 /**
  * The class {@code InvalidAssociateResourceReferenceException} is a form of {@code Throwable}
- * that indicates that referenced associate resource aren't present and this condition 
+ * that indicates that referenced associate resource isn't present and this condition 
  * can be reasonable to application might want to catch.
  */
 public class InvalidAssociateResourceReferenceException extends InvalidResourceReferenceException {

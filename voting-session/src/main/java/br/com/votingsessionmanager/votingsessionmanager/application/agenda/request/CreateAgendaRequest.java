@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.Length;
 import br.com.votingsessionmanager.votingsessionmanager.domain.agenda.Agenda;
 
 /**
- * The class {@code CreateAgendaRequest} is used to populated when application
+ * The class {@code CreateAgendaRequest} is used populated when application
  * receive request to create a new agenda 
  */
 public class CreateAgendaRequest {

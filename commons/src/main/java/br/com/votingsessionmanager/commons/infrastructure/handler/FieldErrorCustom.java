@@ -7,6 +7,9 @@ import org.springframework.validation.FieldError;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.CaseFormat;
 
+/**
+ * The class {@code ErrorCustom} is used on {@ErrorCustom} to indicate field errors
+ */
 public class FieldErrorCustom {
 	private String field;
 
