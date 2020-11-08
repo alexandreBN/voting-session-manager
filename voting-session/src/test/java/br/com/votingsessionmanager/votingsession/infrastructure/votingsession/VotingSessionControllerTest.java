@@ -1,4 +1,4 @@
-package br.com.votingsessionmanager.votingsessionmanager.infrastructure.votingsession;
+package br.com.votingsessionmanager.votingsession.infrastructure.votingsession;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -25,7 +25,7 @@ import br.com.votingsessionmanager.votingsession.domain.agenda.VoteType;
 import br.com.votingsessionmanager.votingsession.domain.associate.Associate;
 import br.com.votingsessionmanager.votingsession.domain.votingsession.VotingSession;
 import br.com.votingsessionmanager.votingsession.domain.votingsession.VotingSessionResult;
-import br.com.votingsessionmanager.votingsessionmanager.environment.EnvironmentService;
+import br.com.votingsessionmanager.votingsession.environment.EnvironmentService;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -232,7 +232,7 @@ public class VotingSessionControllerTest {
 
 		URI voteUri = new URI(votePath);
 		mockMvc
-			.perform(MockMvcRequestBuilders.post(voteUri).content(voteRequestAsString).contentType(MediaType.APPLICATION_JSON))
+			.perform(MockMvcRequestBuilders.put(voteUri).content(voteRequestAsString).contentType(MediaType.APPLICATION_JSON))
 			.andExpect(MockMvcResultMatchers.status().is(HttpStatus.OK.value()));
 	}
 
@@ -264,7 +264,7 @@ public class VotingSessionControllerTest {
 
 		URI voteUri = new URI(votePath);
 		mockMvc
-			.perform(MockMvcRequestBuilders.post(voteUri).content(voteRequestAsString).contentType(MediaType.APPLICATION_JSON))
+			.perform(MockMvcRequestBuilders.put(voteUri).content(voteRequestAsString).contentType(MediaType.APPLICATION_JSON))
 			.andExpect(MockMvcResultMatchers.status().is(HttpStatus.OK.value()));
 	}
 
@@ -296,7 +296,7 @@ public class VotingSessionControllerTest {
 
 		URI voteUri = new URI(votePath);
 		mockMvc
-			.perform(MockMvcRequestBuilders.post(voteUri).content(voteRequestAsString).contentType(MediaType.APPLICATION_JSON))
+			.perform(MockMvcRequestBuilders.put(voteUri).content(voteRequestAsString).contentType(MediaType.APPLICATION_JSON))
 			.andExpect(MockMvcResultMatchers.status().is(HttpStatus.BAD_REQUEST.value()));
 	}
 
@@ -328,7 +328,7 @@ public class VotingSessionControllerTest {
 
 		URI voteUri = new URI(votePath);
 		mockMvc
-			.perform(MockMvcRequestBuilders.post(voteUri).content(voteRequestAsString).contentType(MediaType.APPLICATION_JSON))
+			.perform(MockMvcRequestBuilders.put(voteUri).content(voteRequestAsString).contentType(MediaType.APPLICATION_JSON))
 			.andExpect(MockMvcResultMatchers.status().is(HttpStatus.BAD_REQUEST.value()));
 	}
 
@@ -360,7 +360,7 @@ public class VotingSessionControllerTest {
 
 		URI voteUri = new URI(votePath);
 		mockMvc
-			.perform(MockMvcRequestBuilders.post(voteUri).content(voteRequestAsString).contentType(MediaType.APPLICATION_JSON))
+			.perform(MockMvcRequestBuilders.put(voteUri).content(voteRequestAsString).contentType(MediaType.APPLICATION_JSON))
 			.andExpect(MockMvcResultMatchers.status().is(HttpStatus.BAD_REQUEST.value()));
 	}
 
@@ -384,7 +384,7 @@ public class VotingSessionControllerTest {
 
 		URI voteUri = new URI(votePath);
 		mockMvc
-			.perform(MockMvcRequestBuilders.post(voteUri).content(voteRequestAsString).contentType(MediaType.APPLICATION_JSON))
+			.perform(MockMvcRequestBuilders.put(voteUri).content(voteRequestAsString).contentType(MediaType.APPLICATION_JSON))
 			.andExpect(MockMvcResultMatchers.status().is(HttpStatus.BAD_REQUEST.value()));
 	}
 
@@ -422,7 +422,7 @@ public class VotingSessionControllerTest {
 					.withAgendaId(agendaSaved.getId())
 					.withVote(vote)
 					.buildJSONString();
-				mockMvc.perform(MockMvcRequestBuilders.post(voteUri).content(associateVoteAsString).contentType(MediaType.APPLICATION_JSON));
+				mockMvc.perform(MockMvcRequestBuilders.put(voteUri).content(associateVoteAsString).contentType(MediaType.APPLICATION_JSON));
 			} catch (Exception e) {
 				// do nothing
 			}

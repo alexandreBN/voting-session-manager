@@ -1,18 +1,18 @@
-package br.com.votingsessionmanager.votingsessionmanager.infrastructure.votingsession;
+package br.com.votingsessionmanager.votingsession.infrastructure.votingsession;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import br.com.votingsessionmanager.votingsession.application.votingsession.request.VoteRequest;
+import br.com.votingsessionmanager.votingsession.converter.JSONObjectToStringBuilderConverter;
 import br.com.votingsessionmanager.votingsession.domain.agenda.VoteType;
-import br.com.votingsessionmanager.votingsessionmanager.converter.JSONObjectToStringBuilderConverter;
 
-public class CreateVoteRequestBuilder extends JSONObjectToStringBuilderConverter {
+public class CreateVoteRequestBuilder<T> extends JSONObjectToStringBuilderConverter {
 
-	private Long associateId;
+	private T associateId;
 	private Long agendaId;
 	private VoteType vote;
 
-	public CreateVoteRequestBuilder withAssociateId(Long associateId) {
+	public CreateVoteRequestBuilder withAssociateId(T associateId) {
 		this.associateId = associateId;
 		return this;
 	}
@@ -29,7 +29,8 @@ public class CreateVoteRequestBuilder extends JSONObjectToStringBuilderConverter
 
 	@Override
 	public String buildJSONString() throws JsonProcessingException {
-		VoteRequest voteRequest = new VoteRequest(associateId, agendaId, vote);
+		String identifier = String.valueOf(associateId);
+		VoteRequest voteRequest = new VoteRequest(identifier, agendaId, vote);
 		String voteRequestAsString = convert(voteRequest);
 		return voteRequestAsString;
 	}

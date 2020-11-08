@@ -27,6 +27,7 @@ public class InvalidAgendaResourceException extends InvalidResourceException {
 		return resource;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Long getId() {
 		return id;

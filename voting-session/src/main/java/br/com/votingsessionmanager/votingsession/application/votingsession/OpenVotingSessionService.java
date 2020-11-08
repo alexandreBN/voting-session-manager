@@ -35,7 +35,7 @@ public class OpenVotingSessionService {
 		Agenda agenda = agendaRepository.findById(request.getAgendaId()).orElseThrow(() -> new InvalidAgendaResourceReferenceException(request.getAgendaId()));
 		Optional<VotingSession> votingSessionWithSpecificAgenda = votingSessionRepository.findByAgendaId(request.getAgendaId());
 
-		votingSessionWithSpecificAgenda.ifPresent(c -> {
+		votingSessionWithSpecificAgenda.ifPresent((votingSession) -> {
 			throw new VotingSessionAlreadyOpenedWithAgendaException(agenda.getId());
 		});
 

@@ -8,6 +8,9 @@ import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 @Entity
 public class Associate {
 
@@ -15,12 +18,20 @@ public class Associate {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@JsonInclude(value = Include.NON_NULL)
+	private String cpf;
+
 	@NotBlank
 	@Length(max = 255)
 	private String name;
 
 	@SuppressWarnings("unused")
 	private Associate() {
+	}
+
+	public Associate(String name, String cpf) {
+		this.name = name;
+		this.cpf = cpf;
 	}
 
 	public Associate(String name) {
@@ -33,6 +44,10 @@ public class Associate {
 
 	public String getName() {
 		return name;
+	}
+
+	public String getCpf() {
+		return cpf;
 	}
 
 	@Override

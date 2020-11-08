@@ -26,7 +26,7 @@ public class OpenVotingSessionRequest {
 	@SuppressWarnings("unused")
 	private OpenVotingSessionRequest() { }
 
-	public OpenVotingSessionRequest(@NotNull @Positive Long agendaId) {
+	public OpenVotingSessionRequest(@NotNull @Positive @JsonProperty("agenda_id") Long agendaId) {
 		this.agendaId = agendaId;
 	}
 

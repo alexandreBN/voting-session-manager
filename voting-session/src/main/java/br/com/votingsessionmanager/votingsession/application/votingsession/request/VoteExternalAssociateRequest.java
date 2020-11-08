@@ -7,19 +7,22 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
+import org.hibernate.validator.constraints.Length;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.com.votingsessionmanager.votingsession.application.votingsession.validator.VoteTypeSubSet;
 import br.com.votingsessionmanager.votingsession.domain.agenda.VoteType;
 
 /**
- * The class {@code VoteRequest} is populated when application
- * receive request to save the vote on agenda present on voting session 
+ * The class {@code VoteExternalAssociateRequest} is populated when application receive request
+ * to save the vote on agenda present on voting session
  */
-public class VoteRequest implements GenericVoteRequest {
+public class VoteExternalAssociateRequest implements GenericVoteRequest {
 
 	@NotNull
-	@Positive
+	@NotBlank
+	@Length(min = 11, max = 11)
 	@JsonProperty("associate_id")
 	private String associateId;
 
@@ -32,11 +35,11 @@ public class VoteRequest implements GenericVoteRequest {
 	private VoteType vote;
 
 	@SuppressWarnings("unused")
-	private VoteRequest() {
+	private VoteExternalAssociateRequest() {
 
 	}
 
-	public VoteRequest(@NotNull @NotBlank String associateId, @NotNull @Positive Long agendaId,
+	public VoteExternalAssociateRequest(@NotNull @NotBlank 	@Length(min = 11, max = 11) String associateId, @NotNull @Positive Long agendaId,
 			@VoteTypeSubSet(anyOf = { YES, NO }) VoteType vote) {
 		this.associateId = associateId;
 		this.agendaId = agendaId;

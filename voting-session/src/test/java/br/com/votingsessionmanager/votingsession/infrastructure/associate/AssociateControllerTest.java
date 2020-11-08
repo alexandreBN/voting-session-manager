@@ -1,4 +1,4 @@
-package br.com.votingsessionmanager.votingsessionmanager.infrastructure.associate;
+package br.com.votingsessionmanager.votingsession.infrastructure.associate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import br.com.votingsessionmanager.votingsession.domain.associate.Associate;
-import br.com.votingsessionmanager.votingsessionmanager.environment.EnvironmentService;
+import br.com.votingsessionmanager.votingsession.environment.EnvironmentService;
 
 @SpringBootTest
 @AutoConfigureMockMvc

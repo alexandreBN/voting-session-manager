@@ -1,4 +1,4 @@
-package br.com.votingsessionmanager.votingsessionmanager.infrastructure.agenda;
+package br.com.votingsessionmanager.votingsession.infrastructure.agenda;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import br.com.votingsessionmanager.votingsession.domain.agenda.Agenda;
-import br.com.votingsessionmanager.votingsessionmanager.environment.EnvironmentService;
+import br.com.votingsessionmanager.votingsession.environment.EnvironmentService;
 
 @SpringBootTest
 @AutoConfigureMockMvc

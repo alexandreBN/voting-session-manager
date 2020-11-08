@@ -14,9 +14,9 @@ public class InvalidAssociateResourceReferenceException extends InvalidResourceR
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Long id;
+	private String id;
 
-	public InvalidAssociateResourceReferenceException(Long id) {
+	public InvalidAssociateResourceReferenceException(String id) {
 		this.id = id;
 	}
 
@@ -25,8 +25,9 @@ public class InvalidAssociateResourceReferenceException extends InvalidResourceR
 		return "associate_id";
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public Long getId() {
+	public String getId() {
 		return this.id;
 	}
 
