@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "a1b5fd1f-f41f-4599-b0ad-fc7fa42ff9ff",
+		"name": "Voting Session",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Agenda",
+			"item": [
+				{
+					"name": "Save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Reforma Administrativa\",\n    \"description\": \"Hoje será votada a Reforma Administrativa\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{voting-session-api}}/agendas",
+							"host": [
+								"{{voting-session-api}}"
+							],
+							"path": [
+								"agendas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{voting-session-api}}/agendas/{{agendaId}}",
+							"host": [
+								"{{voting-session-api}}"
+							],
+							"path": [
+								"agendas",
+								"{{agendaId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{voting-session-api}}/agendas",
+							"host": [
+								"{{voting-session-api}}"
+							],
+							"path": [
+								"agendas"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Associate",
+			"item": [
+				{
+					"name": "Save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Alexandre Barreiro Neto\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{voting-session-api}}/associates",
+							"host": [
+								"{{voting-session-api}}"
+							],
+							"path": [
+								"associates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{voting-session-api}}/associates",
+							"host": [
+								"{{voting-session-api}}"
+							],
+							"path": [
+								"associates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{voting-session-api}}/associates/{{associateId}}",
+							"host": [
+								"{{voting-session-api}}"
+							],
+							"path": [
+								"associates",
+								"{{associateId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Voting Session",
+			"item": [
+				{
+					"name": "Vote",
+					"item": [
+						{
+							"name": "Add Vote",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"associate_id\": {{associateId}},\n    \"agenda_id\": {{agendaId}},\n    \"vote\": \"YES\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{voting-session-api}}/voting-sessions/vote",
+									"host": [
+										"{{voting-session-api}}"
+									],
+									"path": [
+										"voting-sessions",
+										"vote"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Open",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"agenda_id\": {{agendaId}},\n    \"open_until\": {\n        \"days\": 0,\n        \"hours\": 0,\n        \"minutes\": 0\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{voting-session-api}}/voting-sessions",
+							"host": [
+								"{{voting-session-api}}"
+							],
+							"path": [
+								"voting-sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Result",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{voting-session-api}}/voting-sessions/agenda/{{agendaId}}/result",
+							"host": [
+								"{{voting-session-api}}"
+							],
+							"path": [
+								"voting-sessions",
+								"agenda",
+								"{{agendaId}}",
+								"result"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "77ea79e2-7f9e-4260-b919-37b6fb26aa2a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "ec18fae3-aaa5-47a9-9937-5dfc14838b17",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "1fc48a6a-9207-462f-95aa-92d93816009f",
+			"key": "voting-session-api",
+			"value": ""
+		},
+		{
+			"id": "b86ade47-5c98-4458-9d12-b47bb01ebfb8",
+			"key": "agendaId",
+			"value": ""
+		},
+		{
+			"id": "faab034a-a8d9-4b76-a73b-03e773064653",
+			"key": "associateId",
+			"value": ""
+		}
+	],
+	"protocolProfileBehavior": {}
+}
