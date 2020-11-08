@@ -10,7 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import br.com.votingsessionmanager.votingsessionmanager.domain.associate.Associate;
+import br.com.votingsessionmanager.votingsession.domain.associate.Associate;
+import br.com.votingsessionmanager.votingsession.infrastructure.associate.AssociateRepository;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)

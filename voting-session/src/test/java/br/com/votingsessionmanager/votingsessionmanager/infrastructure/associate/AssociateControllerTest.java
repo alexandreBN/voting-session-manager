@@ -17,7 +17,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import br.com.votingsessionmanager.votingsessionmanager.domain.associate.Associate;
+import br.com.votingsessionmanager.votingsession.domain.associate.Associate;
 import br.com.votingsessionmanager.votingsessionmanager.environment.EnvironmentService;
 
 @SpringBootTest

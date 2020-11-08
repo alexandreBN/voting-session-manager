@@ -2,7 +2,7 @@ package br.com.votingsessionmanager.votingsessionmanager.infrastructure.associat
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import br.com.votingsessionmanager.votingsessionmanager.application.associate.request.CreateAssociateRequest;
+import br.com.votingsessionmanager.votingsession.application.associate.request.CreateAssociateRequest;
 import br.com.votingsessionmanager.votingsessionmanager.converter.JSONObjectToStringBuilderConverter;
 
 public class CreateAssociateRequestBuilder extends JSONObjectToStringBuilderConverter {
