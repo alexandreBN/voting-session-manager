@@ -11,6 +11,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import br.com.votingsessionmanager.votingsessionmanager.application.votingsession.validator.VoteTypeSubSet;
 import br.com.votingsessionmanager.votingsessionmanager.domain.agenda.VoteType;
 
+/**
+ * The class {@code VoteRequest} is used to populated when application
+ * receive request to save the vote on agenda present on voting session 
+ */
 public class VoteRequest {
 
 	@NotNull

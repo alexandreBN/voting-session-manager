@@ -6,6 +6,10 @@ import org.hibernate.validator.constraints.Length;
 
 import br.com.votingsessionmanager.votingsessionmanager.domain.associate.Associate;
 
+/**
+ * The class {@code CreateAssociateRequest} is used to populated when application
+ * receive request to create a new associate 
+ */
 public class CreateAssociateRequest {
 
 	@NotBlank
@@ -25,6 +29,10 @@ public class CreateAssociateRequest {
 		return name;
 	}
 
+	/**
+	 * Parse {@code CreateAssociateRequest} to {@code Associate}
+	 * @return {@Associate} with same of {@code CreateAssociateRequest} class
+	 */
 	public Associate toEntity() {
 		return new Associate(name);
 	}

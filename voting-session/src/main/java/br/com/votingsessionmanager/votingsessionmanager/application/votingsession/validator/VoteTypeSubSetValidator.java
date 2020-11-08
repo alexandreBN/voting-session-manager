@@ -7,6 +7,9 @@ import javax.validation.ConstraintValidatorContext;
 
 import br.com.votingsessionmanager.votingsessionmanager.domain.agenda.VoteType;
 
+/**
+ * The class {@code VoteTypeSubSetValidator} is used to validate a {@code VoteType} Enum
+ */
 public class VoteTypeSubSetValidator implements ConstraintValidator<VoteTypeSubSet, VoteType> {
 	private VoteType[] subset;
 

@@ -4,6 +4,10 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * The class {@code OpenVotingSessionResponse} is used to populated when application
+ * send response to indicate that data of voting session that are been opened 
+ */
 public class OpenVotingSessionResponse {
 
 	private Long id;

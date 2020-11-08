@@ -17,6 +17,10 @@ import javax.validation.Payload;
 
 import br.com.votingsessionmanager.votingsessionmanager.domain.agenda.VoteType;
 
+/**
+ * The class {@code VoteTypeSubSet} is used as validation the field
+ * that will be receive a {@code VoteType} Enum value
+ */
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 @Retention(RUNTIME)
 @Documented

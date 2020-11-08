@@ -7,6 +7,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.com.votingsessionmanager.votingsessionmanager.domain.agenda.VoteType;
 
+/**
+ * The class {@code VotingSessionResult} is used to populated when application
+ * send response with voting session result
+ */
 public class VotingSessionResult {
 
 	private String agenda;

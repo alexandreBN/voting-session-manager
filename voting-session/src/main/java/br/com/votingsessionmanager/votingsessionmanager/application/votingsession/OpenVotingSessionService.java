@@ -24,6 +24,13 @@ public class OpenVotingSessionService {
 	@Autowired
 	private AgendaRepository agendaRepository;
 
+	/**
+	 * Open a voting session based on agenda
+	 * 
+	 * @param request data of voting session that are been opened
+	 * @return voting session data that are been opened
+	 * @throws InvalidAgendaResourceReferenceException it will be throws if agenda reference is invalid
+	 */
 	public VotingSession open(@Valid OpenVotingSessionRequest request) throws InvalidAgendaResourceReferenceException {
 		Agenda agenda = agendaRepository.findById(request.getAgendaId()).orElseThrow(() -> new InvalidAgendaResourceReferenceException(request.getAgendaId()));
 		Optional<VotingSession> votingSessionWithSpecificAgenda = votingSessionRepository.findByAgendaId(request.getAgendaId());

@@ -14,6 +14,13 @@ public class ShowResultOfVotingSessionAgendaService {
 	@Autowired
 	private VotingSessionRepository votingSessionRepository;
 
+	/**
+	 * Show result from voting session agenda votes
+	 * 
+	 * @param agendaId agenda identifier
+	 * @return voting session result
+	 * @throws InvalidAgendaResourceReferenceOnVotingSessionException it will be throws if informed agenda is not part of relation of voting session
+	 */
 	public VotingSessionResult getResult(Long agendaId) throws InvalidAgendaResourceReferenceOnVotingSessionException {
 		VotingSession votingSession = votingSessionRepository.findByAgendaId(agendaId).orElseThrow(() -> new InvalidAgendaResourceReferenceOnVotingSessionException(agendaId));
 		VotingSessionResult result = votingSession.getResult();
