@@ -9,8 +9,8 @@ Projeto criado para fazer o gerenciamento de sessões de votação com base nos 
 
 ## Execução do Projeto
   ``` git clone https://github.com/alexandreBN/voting-session-manager.git```
-  
-  ``` cd cd voting-session-manager```
+
+  ``` cd voting-session-manager```
 
   - No Docker
     - ```cd docker```
