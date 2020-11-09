@@ -8,12 +8,23 @@ Projeto criado para fazer o gerenciamento de sessões de votação com base nos 
 * Maven
 
 ## Execução do Projeto
-```
-git clone https://github.com/alexandreBN/voting-session-manager.git
-cd voting-session-manager
-mvn clean install -U -Dmaven.test.skip=true
-java -jar voting-session/target/voting-session-0.0.1-SNAPSHOT.jar
-```
+  ``` git clone https://github.com/alexandreBN/voting-session-manager.git```
+  
+  ``` cd cd voting-session-manager```
+
+  - No Docker
+    - ```cd docker```
+    - ```docker-compose up --build```
+  
+  - No terminal
+    - ```mvn clean install -U -Dmaven.test.skip=true```
+    - ```java -jar voting-session/target/voting-session-0.0.1-SNAPSHOT.jar```
+
+  - No Eclipse
+    - Importe o projeto
+    - Execute o comando ```mvn clean install -U -Dmaven.test.skip=true``` no projeto raiz
+    - Execute o ```Update Projet``` do maven
+
 Após a execução dos comandos acima a aplicação estará disponível na porta **8010**.
 
 ## Execução dos Testes Automatizados
