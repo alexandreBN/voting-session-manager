@@ -1,0 +1,47 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    container_name: mysql-voting-session
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: voting-session
+      MYSQL_DATABASE: voting-session
+      MYSQL_USER: voting-session
+      MYSQL_PASSWORD: voting-session
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - 3307:3306
+    networks:
+      - voting-session-network
+    volumes:
+      - db_data:/var/lib/mysql
+
+  voting-session:
+    build:
+      dockerfile: ./docker/voting-session.dockerfile
+      context: ../
+    image: voting-session
+    container_name: voting-session
+    restart: always
+    environment:
+      - spring.profiles.active=docker
+      - VOTING_SESSION_DATABASE_URL=jdbc:mysql://mysql-voting-session:3306/voting_session?useSSL=false&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true
+      - VOTING_SESSION_DATABASE_USERNAME=root
+      - VOTING_SESSION_DATABASE_PASSWORD=voting-session
+    ports:
+      - 8010:8010
+    networks:
+      - voting-session-network
+    depends_on:
+      - db
+    volumes:  
+      - ./wait-for:/usr/local/bin/wait-for
+    command: sh -c './wait-for db:3306 -- java -Djava.security.egd=file:/dev/./urandom -jar /app.jar -Xmx512m'
+    stop_signal: SIGINT
+
+networks:
+  voting-session-network:
+    driver: bridge
+volumes:
+    db_data:
