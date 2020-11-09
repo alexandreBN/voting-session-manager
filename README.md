@@ -22,8 +22,9 @@ Projeto criado para fazer o gerenciamento de sessões de votação com base nos 
 
   - Eclipse
     - Importe o projeto
-    - Execute o comando ```mvn clean install -U -Dmaven.test.skip=true``` no projeto raiz
+    - Configure o JUnit 5 no Build Path
     - Execute o ```Update Projet``` do maven
+    - Execute o comando ```mvn clean install -U -Dmaven.test.skip=true``` no projeto raiz
 
 Após a execução dos comandos acima a aplicação estará disponível na porta **8010**.
 
