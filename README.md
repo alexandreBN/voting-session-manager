@@ -12,15 +12,15 @@ Projeto criado para fazer o gerenciamento de sessões de votação com base nos 
 
   ``` cd voting-session-manager```
 
-  - No Docker
+  - Docker
     - ```cd docker```
     - ```docker-compose up --build```
   
-  - No terminal
+  - Terminal
     - ```mvn clean install -U -Dmaven.test.skip=true```
     - ```java -jar voting-session/target/voting-session-0.0.1-SNAPSHOT.jar```
 
-  - No Eclipse
+  - Eclipse
     - Importe o projeto
     - Execute o comando ```mvn clean install -U -Dmaven.test.skip=true``` no projeto raiz
     - Execute o ```Update Projet``` do maven
